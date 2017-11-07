@@ -1,0 +1,79 @@
+* {
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+body {
+	background: #f0f0f0;
+	color: #666;
+	font-size: 22px; 
+}
+
+.container {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+#new-todo {
+	background: none;
+	color: #666;
+	border: none;
+	border-bottom: 1px solid #bbb;
+	padding: .75rem 1.25rem;
+	margin-bottom: 25px;
+}
+#new-todo:focus {
+	border-bottom: 1px solid #888;
+}
+
+.input-group-addon {
+	background: none;
+	border: none;
+}
+
+.list-group-item {
+	background: none;
+	border: none;
+	border-bottom: 1px solid #bbb;
+}
+.list-group-item:last-child {
+	border-bottom: none;
+}
+.list-group-item:hover > .controls {
+	display: inline;
+}
+
+.todo-text {
+	margin-bottom: 0;
+	width: 80%;
+	white-space: nowrap;
+	overflow: hidden;	
+	text-overflow: ellipsis;
+}
+
+.controls {
+	display: none;
+	position: absolute;
+	right: 0;
+}
+.controls > i {
+	margin-right: 15px;
+	color: #bbb;
+}
+.controls > i:hover {
+	color: #666;
+}
+
+.done {
+	color: #bbb;
+}
+
+.edit-input {
+	display: none;
+	background: none;
+	border: none;
+	color: #666;
+	width: 80%;
+	font-size: 22px; 
+	padding: 0;
+}
