@@ -40,7 +40,7 @@ body {
 	border-bottom: none;
 }
 .list-group-item:hover > .controls {
-	display: inline;
+	visibility: visible;
 }
 
 .todo-text {
@@ -52,7 +52,7 @@ body {
 }
 
 .controls {
-	display: none;
+	visibility: hidden;
 	position: absolute;
 	right: 0;
 }
@@ -66,6 +66,10 @@ body {
 
 .done {
 	color: #bbb;
+}
+.done > .controls > .fa-check {
+	color: #2ecc71;
+	visibility: visible;
 }
 
 .edit-input {

@@ -54,7 +54,7 @@ function createTask() {
 		tasks = JSON.parse(localStorage.getItem('tasks'));
 	}
 	else {
-		$('#new-todo').css('border-bottom', '1px solid red');
+		$('#new-todo').css('border-bottom', '1px solid #e74c3c');
 		setTimeout(() => {
 			$('#new-todo').css('border-bottom', '1px solid #bbb');
 		}, 2000);
@@ -70,14 +70,14 @@ $(document).on('keypress', '#new-todo', (e) => {
 	}
 });
 
-$(document).on('click', '.fa-edit', (event) => {
+$(document).on('click', '.fa-edit, .todo-text', (event) => {
 	var task = $(event.currentTarget).parents('.list-group-item');
 	var taskId = task.attr('id').split('-')[1];
 	
 	for (i in tasks) {
 		if (tasks[i].id == taskId) {
 			task.children('.todo-text').hide();
-			task.children('.edit-input').val("");
+			task.children('.edit-input').val(task.children('.todo-text').text());
 			task.children('.edit-input').show();
 			task.children('.edit-input').focus();
 		}
@@ -104,6 +104,13 @@ $(document).on('keyup', '.edit-input', (event) => {
 		task.children('.edit-input').hide();
 		task.children('.todo-text').show();
 	}
+});
+$(document).on('focusout', '.edit-input', (event) => {
+	var task = $(event.currentTarget).parents('.list-group-item');
+	var taskId = task.attr('id').split('-')[1];
+
+	task.children('.edit-input').hide();
+	task.children('.todo-text').show();
 });
 
 $(document).on('click', '.fa-check', (event) => {
