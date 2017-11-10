@@ -64,6 +64,7 @@ p, input {
 .controls > i {
 	margin-right: 15px;
 	color: #bbb;
+	cursor: default;
 }
 .controls > i:hover {
 	color: #666;
