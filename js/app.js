@@ -7,7 +7,7 @@ $(document).ready(() => {
 
 	if (reversedTasks.length == 0) {
 		$('#todo').append($('<li class="list-group-item empty"> \
-								<p>No tasks to display.</p> \
+								<p>no tasks to display.</p> \
 							</li>'));
 	}
 
@@ -16,9 +16,9 @@ $(document).ready(() => {
 								<p class="todo-text">' + reversedTasks[i].text + '</p> \
 								<input type="text" class="edit-input"> \
 								<div class="controls"> \
-									<i class="fa fa-edit"></i> \
-									<i class="fa fa-check"></i> \
-									<i class="fa fa-trash"></i> \
+									<i class="material-icons edit">mode edit</i> \
+									<i class="material-icons check">done</i> \
+									<i class="material-icons trash">delete</i> \
 								</div> \
 							</li>'));
 
@@ -39,9 +39,9 @@ function createTask() {
 									<p class="todo-text">' + newTask.text + '</p> \
 									<input type="text" class="edit-input"> \
 									<div class="controls"> \
-										<i class="fa fa-edit"></i> \
-										<i class="fa fa-check"></i> \
-										<i class="fa fa-trash"></i> \
+										<i class="material-icons edit">mode edit</i> \
+										<i class="material-icons check">done</i> \
+										<i class="material-icons trash">delete</i> \
 									</div> \
 								</li>'));
 
@@ -70,7 +70,7 @@ $(document).on('keypress', '#new-todo', (e) => {
 	}
 });
 
-$(document).on('click', '.fa-edit, .todo-text', (event) => {
+$(document).on('click', '.edit, .todo-text', (event) => {
 	var task = $(event.currentTarget).parents('.list-group-item');
 	var taskId = task.attr('id').split('-')[1];
 	
@@ -113,7 +113,7 @@ $(document).on('focusout', '.edit-input', (event) => {
 	task.children('.todo-text').show();
 });
 
-$(document).on('click', '.fa-check', (event) => {
+$(document).on('click', '.check', (event) => {
 	var task = $(event.currentTarget).parents('.list-group-item');
 	var taskId = task.attr('id').split('-')[1];
 	
@@ -134,7 +134,7 @@ $(document).on('click', '.fa-check', (event) => {
 	tasks = JSON.parse(localStorage.getItem('tasks'));
 });
 
-$(document).on('click', '.fa-trash', (event) => {
+$(document).on('click', '.trash', (event) => {
 	var task = $(event.currentTarget).parents('.list-group-item');
 	var taskId = task.attr('id').split('-')[1];
 	
@@ -147,7 +147,7 @@ $(document).on('click', '.fa-trash', (event) => {
 
 	if (tasks.length == 0) {
 		$('#todo').append($('<li class="list-group-item empty"> \
-								<p>No tasks to display.</p> \
+								<p>no tasks to display.</p> \
 							</li>'));
 	}
 
