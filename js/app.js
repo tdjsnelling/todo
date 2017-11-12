@@ -26,12 +26,15 @@ $(document).ready(() => {
 			$('#todo-' + reversedTasks[i].id).addClass('done');
 		}
 	}
+
+	progress();
 });
 
 function createTask() {
 	if ($('#new-todo').val() != "") {
 		var newTask = new Object();
 		newTask.id = tasks[tasks.length-1] == undefined ? 0 : parseInt(tasks[tasks.length-1].id) + 1;
+		newTask.created = + Date.now();
 		newTask.text = $('#new-todo').val();
 		newTask.done = false;
 
@@ -59,6 +62,18 @@ function createTask() {
 			$('#new-todo').css('border-bottom', '1px solid #bbb');
 		}, 2000);
 	}
+
+	progress();
+}
+
+function progress() {
+	var numTasks = tasks.length;
+	var numDoneTasks = tasks.filter((task) => {
+		return task.done;
+	}).length;
+	var perc = parseInt(100 * (numDoneTasks / numTasks));
+
+	$("#progress").css('width', perc + '%');
 }
 
 $(document).on('click', '#create-todo', () => {
@@ -132,6 +147,8 @@ $(document).on('click', '.check', (event) => {
 
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	tasks = JSON.parse(localStorage.getItem('tasks'));
+
+	progress();
 });
 
 $(document).on('click', '.trash', (event) => {
@@ -153,4 +170,6 @@ $(document).on('click', '.trash', (event) => {
 
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	tasks = JSON.parse(localStorage.getItem('tasks'));
+
+	progress();
 });

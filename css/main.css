@@ -10,8 +10,7 @@ body {
 }
 
 .container {
-	margin-top: 100px;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 }
 
 p, input {
@@ -93,4 +92,20 @@ p, input {
 }
 .edit-input:focus {
 	background: #e8e8e8;
+}
+
+.created {
+	font-size: 11px;
+}
+
+.progress-container {
+	background: #bbb;
+	margin: 75px auto 75px auto;
+}
+#progress {
+	width: 0px;
+	height: 4px;
+	background: #2ecc71;
+
+	transition: width 0.3s;
 }
