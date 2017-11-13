@@ -3,31 +3,12 @@ tasks = JSON.parse(localStorage.getItem('tasks'));
 tasks = tasks == null ? [] : tasks;
 
 $(document).ready(() => {
-	reversedTasks = tasks.slice().reverse();
+	$('.tab-pane').css('max-height', $(window).height() - $('.tab-content').offset().top - 75);
+	update();
+});
 
-	if (reversedTasks.length == 0) {
-		$('#todo').append($('<li class="list-group-item empty"> \
-								<p>no tasks to display.</p> \
-							</li>'));
-	}
-
-	for (i in reversedTasks) {
-		$('#todo').append($('<li class="list-group-item" id="todo-' + reversedTasks[i].id + '"> \
-								<p class="todo-text">' + reversedTasks[i].text + '</p> \
-								<input type="text" class="edit-input"> \
-								<div class="controls"> \
-									<i class="material-icons edit">mode edit</i> \
-									<i class="material-icons check">done</i> \
-									<i class="material-icons trash">delete</i> \
-								</div> \
-							</li>'));
-
-		if (reversedTasks[i].done) {
-			$('#todo-' + reversedTasks[i].id).addClass('done');
-		}
-	}
-
-	progress();
+$(window).resize(() => {
+	$('.tab-pane').css('max-height', $(window).height() - $('.tab-content').offset().top - 75);
 });
 
 function createTask() {
@@ -61,6 +42,47 @@ function createTask() {
 		setTimeout(() => {
 			$('#new-todo').css('border-bottom', '1px solid #bbb');
 		}, 2000);
+	}
+
+	update();
+}
+
+function update() {
+	$('.list-group-item').remove();
+
+	reversedTasks = tasks.slice().reverse();
+
+	if (reversedTasks.length == 0) {
+		$('#todo').append($('<li class="list-group-item empty"> \
+								<p>no tasks to display.</p> \
+							</li>'));
+	}
+
+	for (i in reversedTasks) {
+		$('#todo').append($('<li class="list-group-item" id="todo-' + reversedTasks[i].id + '"> \
+								<p class="todo-text">' + reversedTasks[i].text + '</p> \
+								<input type="text" class="edit-input"> \
+								<div class="controls"> \
+									<i class="material-icons edit">mode edit</i> \
+									<i class="material-icons check">done</i> \
+									<i class="material-icons trash">delete</i> \
+								</div> \
+							</li>'));
+
+		if (reversedTasks[i].done) {
+			$('#todo-' + reversedTasks[i].id).addClass('done');
+		}
+		else {
+			$('#todo-remaining').append($('<li class="list-group-item" id="todo-' + reversedTasks[i].id + '"> \
+								<p class="todo-text">' + reversedTasks[i].text + '</p> \
+								<input type="text" class="edit-input"> \
+								<div class="controls"> \
+									<i class="material-icons edit">mode edit</i> \
+									<i class="material-icons check">done</i> \
+									<i class="material-icons trash">delete</i> \
+								</div> \
+							</li>'));
+		}
 	}
 
 	progress();
@@ -114,6 +136,8 @@ $(document).on('keyup', '.edit-input', (event) => {
 
 		localStorage.setItem('tasks', JSON.stringify(tasks));
 		tasks = JSON.parse(localStorage.getItem('tasks'));
+
+		update();
 	}
 	else if (event.which == 27) {
 		task.children('.edit-input').hide();
@@ -148,7 +172,7 @@ $(document).on('click', '.check', (event) => {
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	tasks = JSON.parse(localStorage.getItem('tasks'));
 
-	progress();
+	update();
 });
 
 $(document).on('click', '.trash', (event) => {
@@ -171,5 +195,5 @@ $(document).on('click', '.trash', (event) => {
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	tasks = JSON.parse(localStorage.getItem('tasks'));
 
-	progress();
+	update();
 });

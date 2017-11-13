@@ -24,7 +24,7 @@ p, input {
 	border: none;
 	border-bottom: 1px solid #bbb;
 	padding: .75rem 1.25rem;
-	margin-bottom: 25px;
+	margin-top: 68.5px;
 }
 #new-todo:focus {
 	border-bottom: 1px solid #888;
@@ -108,4 +108,45 @@ p, input {
 	background: #2ecc71;
 
 	transition: width 0.3s;
+}
+
+.nav-tabs {
+	border-bottom: none;
+	margin-bottom: 15px;
+}
+.nav-link {
+	color: #bbb;
+	background: none !important;
+	border-radius: 0px !important;
+	border: none !important;
+}
+.nav-link:hover {
+	color: #666;
+}
+.nav-link.active {
+	background: #e8e8e8 !important;
+	color: #666;
+}
+
+.tab-pane {
+	padding: 0px 12px 0px 12px;
+	overflow-y: auto;
+}
+
+.tab-pane::-webkit-scrollbar-track
+{
+	border-radius: 0px;
+	background-color: #bbb;
+}
+
+.tab-pane::-webkit-scrollbar
+{
+	width: 2px;
+	background-color: none;
+}
+
+.tab-pane::-webkit-scrollbar-thumb
+{
+	border-radius: 0px;
+	background-color: #666;
 }
