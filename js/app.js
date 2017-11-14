@@ -4,11 +4,16 @@ tasks = tasks == null ? [] : tasks;
 
 $(document).ready(() => {
 	$('.tab-pane').css('max-height', $(window).height() - $('.tab-content').offset().top - 75);
+	setTimeout(() => {
+		$('.todo-text, .edit-input').width($('.todo-text').parent().width() - $('.controls').width());
+	}, 75);
+
 	update();
 });
 
 $(window).resize(() => {
 	$('.tab-pane').css('max-height', $(window).height() - $('.tab-content').offset().top - 75);
+	$('.todo-text, .edit-input').width($('.todo-text').parent().width() - $('.controls').width());
 });
 
 function createTask() {
@@ -23,7 +28,7 @@ function createTask() {
 									<p class="todo-text">' + newTask.text + '</p> \
 									<input type="text" class="edit-input"> \
 									<div class="controls"> \
-										<i class="material-icons edit">mode edit</i> \
+										<i class="material-icons edit">edit</i> \
 										<i class="material-icons check">done</i> \
 										<i class="material-icons trash">delete</i> \
 									</div> \
@@ -71,7 +76,7 @@ function update() {
 								<p class="todo-text">' + reversedTasks[i].text + '</p> \
 								<input type="text" class="edit-input"> \
 								<div class="controls"> \
-									<i class="material-icons edit">mode edit</i> \
+									<i class="material-icons edit">edit</i> \
 									<i class="material-icons check">done</i> \
 									<i class="material-icons trash">delete</i> \
 								</div> \
@@ -85,7 +90,7 @@ function update() {
 								<p class="todo-text">' + reversedTasks[i].text + '</p> \
 								<input type="text" class="edit-input"> \
 								<div class="controls"> \
-									<i class="material-icons edit">mode edit</i> \
+									<i class="material-icons edit">edit</i> \
 									<i class="material-icons check">done</i> \
 									<i class="material-icons trash">delete</i> \
 								</div> \

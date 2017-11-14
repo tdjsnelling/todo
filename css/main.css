@@ -158,4 +158,8 @@ p, input {
 	.controls {
 		visibility: visible;
 	}
+
+	.todo-text, .edit-text {
+		max-width: 320px;
+	}
 }
