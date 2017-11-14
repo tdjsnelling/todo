@@ -25,6 +25,7 @@ p, input {
 	border-bottom: 1px solid #bbb;
 	padding: .75rem 1.25rem;
 	margin-top: 68.5px;
+	margin-bottom: 30px;
 }
 #new-todo:focus {
 	border-bottom: 1px solid #888;
@@ -138,15 +139,23 @@ p, input {
 	border-radius: 0px;
 	background-color: #bbb;
 }
-
 .tab-pane::-webkit-scrollbar
 {
 	width: 2px;
 	background-color: none;
 }
-
 .tab-pane::-webkit-scrollbar-thumb
 {
 	border-radius: 0px;
 	background-color: #666;
+}
+
+@media (max-width: 768px) {
+	#new-todo {
+		margin-top: 0px !important;
+	}
+
+	.controls {
+		visibility: visible;
+	}
 }

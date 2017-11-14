@@ -50,11 +50,19 @@ function createTask() {
 function update() {
 	$('.list-group-item').remove();
 
-	reversedTasks = tasks.slice().reverse();
+	var reversedTasks = tasks.slice().reverse();
+	var numDoneTasks = reversedTasks.filter((task) => {
+		return task.done;
+	});
 
 	if (reversedTasks.length == 0) {
 		$('#todo').append($('<li class="list-group-item empty"> \
 								<p>no tasks to display.</p> \
+							</li>'));
+	}
+	if (numDoneTasks.length == reversedTasks.length) {
+		$('#todo-remaining').append($('<li class="list-group-item empty"> \
+								<p>no outstanding tasks.</p> \
 							</li>'));
 	}
 
